@@ -129,7 +129,32 @@
 
 <div id="docs-aria-speakable" class="docs-a11y-ariascreenreader-speakable docs-offscreen" aria-live="assertive" role="region" aria-atomic></div></div>
 
+<script type="text/javascript">
+ 
+function pedirPosicion(pos) {
+ 
+   //alert("¡Hola! Estas en : "+pos.coords.latitude+ ","+pos.coords.longitude);
+   //alert(pos);
+   document.getElementById('entry_2079558735').value =pos.coords.longitude;
+   document.getElementById('entry_544835488').value =pos.coords.latitude;
+   document.getElementById('entry_2142636571').value =pos.coords.altitude;
+   document.getElementById('entry_2079558735').readOnly = true;
+   document.getElementById('entry_544835488').readOnly = true;
+   document.getElementById('entry_2142636571').readOnly = true;
+ 
+  // alert(" Rango de localización de +/- "+pos.coords.accuracy+" metros");
+ 
+}
+ 
+ if(navigator.geolocation){
+		navigator.geolocation.watchPosition(pedirPosicion,
+			function(errorcode){alert('No GPS...Este formulario solo se puede usar con Smartphones con GPS')},
+			{enableHighAccuracy:true,maximumAge:30*1000,timeout:45*1000}
+		);}
+ 
+</script> 
 <script type='text/javascript' src='/static/forms/client/js/2331179520-formviewer_prd.js'></script>
 <script type="text/javascript">H5F.setup(document.getElementById('ss-form'));_initFormViewer(
           "[100,\x22#ccc\x22,[]\n]\n");
       </script></div></body></html>
+
